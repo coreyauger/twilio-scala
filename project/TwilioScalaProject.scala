@@ -14,7 +14,14 @@ object TwilioScalaProject extends Build with BuildExtra{
     resolvers ++= Seq(akkaRelease, akkaSnapshot, sprayJson, sonatypeRelease, sonatypeSnapshot)
   )
 
-  lazy val coreSettings = commonSettings ++ Seq(
+  lazy val resolverSettings = Seq(
+    credentials += Credentials(Path.userHome / ".ivy2" / ".credentials"),
+    resolvers += "NextWave Repo" at "http://maxdevmaster.cloudapp.net:4343/artifactory/nxtwv-maven/",
+    publishTo := Some("NextWave Repo" at "http://maxdevmaster.cloudapp.net:4343/artifactory/nxtwv-maven/")
+  )
+
+
+  lazy val coreSettings = commonSettings ++ resolverSettings ++ Seq(
     name := "twilio-scala",
     libraryDependencies :=
       Seq(
@@ -37,7 +44,7 @@ object TwilioScalaProject extends Build with BuildExtra{
         "org.scalatest" % "scalatest_2.10" % "2.0" % "test"
       ),
 
-    parallelExecution in Test := false,
+    parallelExecution in Test := false/*,
 
     publishTo <<= version { (v: String) =>
       val nexus = "https://oss.sonatype.org/"
@@ -69,7 +76,7 @@ object TwilioScalaProject extends Build with BuildExtra{
             <url>http://fail-fast.systems</url>
           </developer>
         </developers>),
-    unmanagedResources in Compile <+= baseDirectory map { _ / "LICENSE" }
+    unmanagedResources in Compile <+= baseDirectory map { _ / "LICENSE" }*/
 
   )
 }
