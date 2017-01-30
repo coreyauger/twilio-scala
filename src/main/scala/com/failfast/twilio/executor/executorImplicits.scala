@@ -6,7 +6,7 @@ import com.failfast.twilio.exception.TwilioException
 import com.failfast.twilio.request._
 import com.failfast.twilio.json._
 import com.failfast.twilio.resource._
-import com.typesafe.scalalogging.slf4j.Logging
+//import com.typesafe.scalalogging.slf4j.Logging
 import scala.concurrent._
 import spray.httpx.unmarshalling._
 import spray.util._
@@ -19,7 +19,7 @@ import spray.httpx.SprayJsonSupport._
 import spray.client.pipelining._
 
 
-object ExecutorImplicits extends Logging with DefaultJsonFormats{
+object ExecutorImplicits extends DefaultJsonFormats{
 
   val checkExceptions: (Throwable) => TwilioException = {
     case e: spray.httpx.UnsuccessfulResponseException =>

@@ -8,8 +8,7 @@ object TwilioScalaProject extends Build with BuildExtra{
   lazy val commonSettings: Seq[Setting[_]] = Seq(
     organization := "systems.fail-fast",
     version := "0.3-SNAPSHOT",
-    scalaVersion := "2.10.4",
-    crossScalaVersions := Seq("2.10.4", "2.11.1"),
+    scalaVersion := "2.11.1",
     scalacOptions := Seq("-deprecation", "-unchecked", "-feature", "-language:postfixOps"),
     resolvers ++= Seq(akkaRelease, akkaSnapshot, sprayJson, sonatypeRelease, sonatypeSnapshot)
   )
@@ -20,22 +19,26 @@ object TwilioScalaProject extends Build with BuildExtra{
     publishTo := Some("NextWave Repo" at "http://maxdevmaster.cloudapp.net:4343/artifactory/nxtwv-maven/")
   )
 
+  val sprayV = "1.3.3"
+
+  val akkaV = "2.3.9"
 
   lazy val coreSettings = commonSettings ++ resolverSettings ++ Seq(
     name := "twilio-scala",
     libraryDependencies :=
       Seq(
         "ch.qos.logback"      % "logback-classic"  % "1.0.13",
-        "io.spray"            % "spray-can"        % "1.3.1",
-        "io.spray"            % "spray-http"    % "1.3.1",
-        "io.spray"            % "spray-client"    % "1.3.1",
-        "com.typesafe.akka"  %% "akka-actor"       % "2.3.0",
-        "com.typesafe.akka"  %% "akka-slf4j"       % "2.3.0",
-        "io.spray"            % "spray-httpx"    % "1.3.1",
-        "io.spray"            % "spray-util"    % "1.3.1",
+        "org.parboiled"       %%  "parboiled"     % "2.0.1",
+        "io.spray"            %% "spray-can"        % sprayV,
+        "io.spray"            %% "spray-http"    % sprayV,
+        "io.spray"            %% "spray-client"    % sprayV,
+        "com.typesafe.akka"  %% "akka-actor"       % akkaV,
+        "com.typesafe.akka"  %% "akka-slf4j"       % akkaV,
+        "io.spray"            %% "spray-httpx"    % sprayV,
+        "io.spray"            %% "spray-util"    % sprayV,
         "io.spray" %%  "spray-json" % "1.2.6",
         "com.typesafe"         %   "config"            % "1.0.0",
-        "com.typesafe"        %% "scalalogging-slf4j" % "1.0.1",
+        "com.typesafe.scala-logging"        %% "scala-logging-slf4j" % "2.0.3",
         "org.pegdown"         % "pegdown" % "1.4.2",
         "commons-io" % "commons-io" % "2.4",
         "commons-codec" % "commons-codec" % "1.9",
