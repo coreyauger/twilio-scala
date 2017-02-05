@@ -7,7 +7,7 @@ object TwilioScalaProject extends Build with BuildExtra{
 
   lazy val commonSettings: Seq[Setting[_]] = Seq(
     organization := "systems.fail-fast",
-    version := "0.4-SNAPSHOT",
+    version := "0.4",
     scalaVersion := "2.11.1",
     scalacOptions := Seq("-deprecation", "-unchecked", "-feature", "-language:postfixOps"),
     resolvers ++= Seq(akkaRelease, akkaSnapshot, sprayJson, sonatypeRelease, sonatypeSnapshot)
