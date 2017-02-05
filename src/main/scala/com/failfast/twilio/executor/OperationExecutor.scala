@@ -18,10 +18,10 @@ import scala.concurrent.{duration, Future}
 import duration._
 import scala.concurrent.{Future}
 
-trait OperationExecutor[A <: TwilioRequest, B <: TwilioResponse] extends TwilioConfig with DefaultJsonProtocol{
+abstract class OperationExecutor[A <: TwilioRequest, B <: TwilioResponse](implicit val system: ActorSystem) extends TwilioConfig with DefaultJsonProtocol{
 
   //FIXME hast to go to con
-  implicit val system = ActorSystem("twilio-scala")
+  //implicit val system = ActorSystem("squbs")
   import system.dispatcher
   implicit val timeout = Timeout(10.seconds)
 

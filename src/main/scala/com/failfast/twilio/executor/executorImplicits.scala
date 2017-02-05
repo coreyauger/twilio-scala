@@ -17,9 +17,11 @@ import spray.json._
 import DefaultJsonProtocol._
 import spray.httpx.SprayJsonSupport._
 import spray.client.pipelining._
+import akka.actor.ActorSystem
 
+class ExecutorImplicits(implicit val system: ActorSystem) extends DefaultJsonFormats{
 
-object ExecutorImplicits extends DefaultJsonFormats{
+  //implicit val system = ActorSystem("squbs")
 
   val checkExceptions: (Throwable) => TwilioException = {
     case e: spray.httpx.UnsuccessfulResponseException =>
