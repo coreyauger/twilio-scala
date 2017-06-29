@@ -7,7 +7,7 @@ object TwilioScalaProject extends Build with BuildExtra{
 
   lazy val commonSettings: Seq[Setting[_]] = Seq(
     organization := "systems.fail-fast",
-    version := "0.5-SNAPSHOT",
+    version := "0.4-SNAPSHOT",
     scalaVersion := "2.11.1",
     scalacOptions := Seq("-deprecation", "-unchecked", "-feature", "-language:postfixOps"),
     resolvers ++= Seq(akkaRelease, akkaSnapshot, sprayJson, sonatypeRelease, sonatypeSnapshot)
@@ -15,8 +15,8 @@ object TwilioScalaProject extends Build with BuildExtra{
 
   lazy val resolverSettings = Seq(
     credentials += Credentials(Path.userHome / ".ivy2" / ".credentials"),
-    resolvers += "NextWave Repo" at "http://maxdevmaster.cloudapp.net:4343/artifactory/nxtwv-maven/",
-    publishTo := Some("NextWave Repo" at "http://maxdevmaster.cloudapp.net:4343/artifactory/nxtwv-maven/")
+    resolvers += "NextWave Repo" at "https://repository.conversant.im/artifactory/nxtwv-maven/",
+    publishTo := Some("NextWave Repo" at "https://repository.conversant.im/artifactory/nxtwv-maven/")
   )
 
   val sprayV = "1.3.1"
